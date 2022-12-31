@@ -23,9 +23,9 @@ jobs:
           POSTGRES_DB: simple_bank
         options: >-
           --health-cmd pg_isready
-          --helath-interval 10s
+          --health-interval 10s
           --health-timeout 5s
-          --helath-retries 5
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v3
