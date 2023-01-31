@@ -74,8 +74,8 @@ func (server *Server) createUser(ctx *gin.Context) {
 }
 
 type loginUserRequest struct {
-	Username string `json:"username" binding:"required,alphanum`
-	Password string `json:"password" bindnig:"required,min=6`
+	Username string `json:"username" binding:"required,alphanum"`
+	Password string `json:"password" binding:"required,min=6"`
 }
 
 type loginUserResponse struct {
