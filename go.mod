@@ -1,6 +1,6 @@
 module github.com/pace-noge/simple-bank
 
-go 1.19
+go 1.20
 
 require (
 	github.com/aead/chacha20poly1305 v0.0.0-20170617001512-233f39982aeb
