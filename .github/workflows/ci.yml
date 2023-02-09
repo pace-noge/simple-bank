@@ -43,7 +43,7 @@ jobs:
     - name: debug
       run: |
         pwd
-        echo $(GOPATH)
+        echo $($GOPATH)
         echo $($GOROOT)
     
     - name: Install Go migrate
@@ -57,3 +57,4 @@ jobs:
 
     - name: Test
       run: make test
+      env:  /home/runner/work/simple-bank/go/
