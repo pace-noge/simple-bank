@@ -37,9 +37,6 @@ jobs:
 
     - name: checkout code into Go module directory
       uses: actions/checkout@v3
-      with:
-        fetch-depth: 1
-        path: go/src/github.com/pace-noge/simple-bank
     
     - name: debug
       run: |
@@ -49,8 +46,9 @@ jobs:
         echo ${GOPATH}
         echo ${GOROOT}
         go env
+        ls -lah
       env:
-        GOPATH: /home/runner/work/simple-bank/go/
+        GOPATH: /home/runner/work/simple-bank/simple-bank/go/
     
     - name: Install Go migrate
       run: |
@@ -58,14 +56,14 @@ jobs:
         sudo mv migrate /usr/bin/
         which migrate 
       env:
-        GOPATH: /home/runner/work/simple-bank/go/
+        GOPATH: /home/runner/work/simple-bank/simple-bank/go/
     
     - name: Run migrations
       run: |
         ls -lah
         make migrateup
       env:
-        GOPATH: /home/runner/work/simple-bank/go/
+        GOPATH: /home/runner/work/simple-bank/simple-bank/go/
 
 
     - name: Test
