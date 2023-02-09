@@ -31,11 +31,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+        path: go/src/github.com/pace-noge/simple-bank
 
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: 1.20
+    
+    - name: debug
+      run: |
+        pwd
+        echo $(GOPATH)
+        echo $($GOROOT)
     
     - name: Install Go migrate
       run: |
