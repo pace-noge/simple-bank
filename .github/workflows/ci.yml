@@ -30,32 +30,42 @@ jobs:
           --health-retries 5
 
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 1
-        path: go/src/github.com/pace-noge/simple-bank
-
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: 1.20
+
+    - name: checkout code into Go module directory
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
+        path: go/src/github.com/pace-noge/simple-bank
     
     - name: debug
       run: |
         pwd
-        echo $($GOPATH)
-        echo $($GOROOT)
+        echo ${HOME}
+        echo ${GITHUB_WORKSPACE}
+        echo ${$GOPATH}
+        echo ${$GOROOT}
+      env:
+        GOPATH: /home/runner/work/simple-bank/go/
     
     - name: Install Go migrate
       run: |
         curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.2/migrate.linux-amd64.tar.gz | tar xvz
         sudo mv migrate /usr/bin/
         which migrate 
+      env:
+        GOPATH: /home/runner/work/simple-bank/go/
     
     - name: Run migrations
       run: make migrateup
+      env:
+        GOPATH: /home/runner/work/simple-bank/go/
+
 
     - name: Test
       run: make test
-      env:  
+      env:
         GOPATH: /home/runner/work/simple-bank/go/
