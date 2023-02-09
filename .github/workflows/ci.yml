@@ -68,6 +68,7 @@ jobs:
 
     - name: Test
       run: |
+        go version
         go mod tidy
         make test
       env:
