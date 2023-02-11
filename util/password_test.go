@@ -11,7 +11,7 @@ func TestPassword(t *testing.T) {
 	password := RandomStr(6)
 
 	hashedPassword1, err := HashPassword(password)
-	require.NoError(t, err)
+	require.NoError(t, err, "NO error")
 	require.NotEmpty(t, hashedPassword1)
 
 	err = CheckPassword(password, hashedPassword1)
